@@ -1,0 +1,26 @@
+# Archivos ERA5 superan el límite de 100 MB de GitHub → NO se suben
+*.nc
+
+# Jupyter notebooks output
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Spark temp y checksums
+spark-warehouse/
+derby.log
+metastore_db/
+*.crc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Google Colab
+drive/
