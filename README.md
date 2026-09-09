@@ -165,26 +165,4 @@ MergeGeo/
 | **Javiera González Mardones** | Visualización de datos — *GitHub pendiente* | — |
 | **José Salgado Escalona** | Redacción del informe: consolidación de la estructura narrativa, redacción técnica y síntesis de hallazgos | [@JoseRicardoSE](https://github.com/JoseRicardoSE) |
 
----
 
-## ⚠️ Notas y Limitaciones
-
-- **Muestra modesta:** Con ~10 años de datos agregados por comuna, el modelo de riesgo se presenta como **prueba de concepto**, no como sistema de predicción listo para producción.
-- **API key:** Si se necesitan re-generar los notebooks 01-02 desde cero, se requiere una API key propia de `datospararesiliencia.cl` — no reutilizar la que viene en el código.
-- ** anti-extrapolación:** El modelo del notebook 05 incluye control explícito para no predecir valores fuera del rango histórico observado.
-- **Trabajo futuro:** Integración de datos de MapBiomas (uso de suelo y cicatrices de fuego).
-
----
-
-## 📋 Estado del Proyecto
-
-- [x] Descarga y limpieza de datos CONAF
-- [x] Cruce con ERA5 (evento a evento)
-- [x] Agregación con Apache Spark (comuna × año)
-- [x] Serie nacional mensual corregida (mtys × ERA5)
-- [x] Mapas coropléticos interactivos (Folium)
-- [x] Mapa de puntos de importancia
-- [x] Modelo de riesgo clasificatorio (XGBoost)
-- [x] Dashboard HTML autocontenido
-- [ ] Informe para audiencia no técnica
-- [ ] Presentación de 10 minutos
