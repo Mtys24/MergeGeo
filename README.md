@@ -162,7 +162,7 @@ MergeGeo/
 | **Fabian Valdés** | Consultas y exploración de datos | [@favc-5](https://github.com/favc-5) |
 | **Jairo Arias Valenzuela** | Extracción, limpieza y consolidación de registros CONAF (1985-2024) y consumo estructurado de la API meteorológica Open-Meteo | [@jairoarias208-beep](https://github.com/jairoarias208-beep) |
 | **Matías Manríquez** | Visualización de datos: mapas geoespaciales interactivos en Folium y gráficos analíticos en Plotly | [@Mtys24](https://github.com/Mtys24) |
-| **Javiera González Mardones** | Visualización de datos — *GitHub pendiente* | — |
+| **Javiera González Mardones** | Visualización de datos | [@Zelaznog-J](https://github.com/Zelaznog-J) |
 | **José Salgado Escalona** | Redacción del informe: consolidación de la estructura narrativa, redacción técnica y síntesis de hallazgos | [@JoseRicardoSE](https://github.com/JoseRicardoSE) |
 
 
