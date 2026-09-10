@@ -174,6 +174,33 @@ MergeGeo/
 
 ---
 
+## ☁️ Cómo clonar este repo y correrlo en Google Colab
+
+Los notebooks `03` a `09` están pensados para correr en Google Colab, leyendo sus archivos
+desde una carpeta de Google Drive (`DRIVE_BASE`) — no desde el repo directamente. Pasos para
+dejarlo andando desde cero:
+
+1. **Consigue los `.nc` de ERA5** (no están en este repo por su tamaño — ver nota en
+   "Estructura del Repositorio"): descárgalos desde esta carpeta de Drive del equipo:
+   👉 **[era5_t2m / era5_tp — Google Drive](https://drive.google.com/drive/folders/1WJsjzEDG0r5h_7ulisdxdnxW4UjZJ-SX?usp=sharing)**
+2. **Clona (o descarga como ZIP) este repo** en tu computador:
+   ```bash
+   git clone https://github.com/Mtys24/MergeGeo.git
+   ```
+3. **Crea una carpeta en tu propio Google Drive** (el nombre no importa, será tu `DRIVE_BASE`
+   — por ejemplo `MergeGeo_datos`) y sube ahí adentro:
+   - Los 2 archivos `.nc` que descargaste en el paso 1.
+   - `incendios_conaf_2010_2020.xls`, `incendios_conaf_raw.xls` y
+     `6.- Ocurrencia Nacional...xls` (ya vienen en la raíz de este repo, del paso 2).
+4. **Abre cada notebook (03 → 09) en Colab**: `Archivo → Subir notebook` (o `Archivo → Abrir
+   notebook → GitHub`, pegando la URL de este repo) y edita la variable `DRIVE_BASE` en la
+   celda de configuración de cada uno para que apunte a la carpeta que creaste en el paso 3
+   (reemplaza el placeholder `CAMBIAR_A_TU_RUTA`).
+5. Corre los notebooks en orden: **03 → 04 → 05 → 06 → 07 → 08 → 09**. `datos_procesados/`
+   se genera solo dentro de tu carpeta de Drive a medida que avanzas.
+
+---
+
 ## 🧑‍💻 Equipo de Trabajo
 
 | Integrante | Rol en el Proyecto | GitHub |
