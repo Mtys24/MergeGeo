@@ -130,6 +130,7 @@ MergeGeo/
 ├── 6.- Ocurrencia Nacional de Incendios Forestales según Mes, 1985 - 2024_octubre.xls
 │                                   # Serie histórica CONAF, input del notebook 05
 ├── MergeGeo_informe.pdf
+├── MergeGeo_presentacion.pptx      # Presentación utilizada en la exposición
 ├── .gitignore                      # Excluye los .nc de ERA5 (superan el límite de 100MB de GitHub)
 ├── README.md
 └── datos_procesados/               # Outputs generados por los notebooks 03-09
