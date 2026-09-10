@@ -114,36 +114,36 @@ El proyecto sigue un pipeline secuencial de 7 notebooks:
 
 ```
 MergeGeo/
-├── 01_descargar_incendios_conaf.ipynb
-├── 02_preparar_incendios_para_era5.ipynb
-├── 03_cruzar_incendios_era5.ipynb
-├── 04_agregacion_spark_comuna_anio.ipynb
-├── 05_serie_nacional_mensual_mtys_era5.ipynb
-├── 06_mapa_georreferenciado_comuna.ipynb
-├── 07_mapa_puntos_importancia.ipynb
-├── 08_modelo_riesgo_comuna_anio.ipynb
-├── 09_dashboard.ipynb
+├── 01_descargar_incendios_conaf.ipynb      # Descarga incendios CONAF vía API (pyDataverse)
+├── 02_preparar_incendios_para_era5.ipynb   # Limpia/filtra a 2010-2019
+├── 03_cruzar_incendios_era5.ipynb          # Cruza cada evento con clima diario ERA5
+├── 04_agregacion_spark_comuna_anio.ipynb   # Agregación PySpark comuna×año
+├── 05_serie_nacional_mensual_mtys_era5.ipynb  # Serie nacional mtys corregida con clima real
+├── 06_mapa_georreferenciado_comuna.ipynb   # Mapas coropléticos por comuna
+├── 07_mapa_puntos_importancia.ipynb        # Mapa de puntos por evento
+├── 08_modelo_riesgo_comuna_anio.ipynb      # Clasificación de riesgo por comuna-año
+├── 09_dashboard.ipynb                      # Ensambla el dashboard.html final
 ├── era5_extraccion.ipynb           # Documenta cómo se generaron los .nc de ERA5
 │                                   # (no se ejecuta como parte del pipeline 01-09)
 ├── incendios_conaf_raw.xls         # Output crudo del notebook 01 (input del 02)
 ├── incendios_conaf_2010_2020.xls   # Output del notebook 02 (input del 03)
 ├── 6.- Ocurrencia Nacional de Incendios Forestales según Mes, 1985 - 2024_octubre.xls
 │                                   # Serie histórica CONAF, input del notebook 05
-├── MergeGeo_informe.pdf
+├── MergeGeo_informe.pdf            # Informe técnico completo del proyecto
 ├── MergeGeo_presentacion.pptx      # Presentación utilizada en la exposición
 ├── .gitignore                      # Excluye los .nc de ERA5 (superan el límite de 100MB de GitHub)
 ├── README.md
 └── datos_procesados/               # Outputs generados por los notebooks 03-09
-    ├── incendios_conaf_era5_2010_2020.csv/.parquet
-    ├── incendios_nacional_mensual_era5.csv
-    ├── spark_comuna_anio/
+    ├── incendios_conaf_era5_2010_2020.csv/.parquet  # Output del notebook 03
+    ├── incendios_nacional_mensual_era5.csv           # Output del notebook 05
+    ├── spark_comuna_anio/                            # Output del notebook 04 (Spark)
     │   ├── csv/
     │   └── parquet/año=2010.../año=2019/
-    ├── mapa_severidad_historica.html
-    ├── mapa_estres_hidrico.html
-    ├── mapa_puntos_importancia.html
-    ├── modelo_riesgo_comuna_anio.csv
-    └── dashboard.html
+    ├── mapa_severidad_historica.html   # Output del notebook 06
+    ├── mapa_estres_hidrico.html        # Output del notebook 06
+    ├── mapa_puntos_importancia.html    # Output del notebook 07
+    ├── modelo_riesgo_comuna_anio.csv   # Output del notebook 08
+    └── dashboard.html                  # Output del notebook 09 (junta todo lo anterior)
 ```
 
 ---
