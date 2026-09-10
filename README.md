@@ -114,6 +114,8 @@ El proyecto sigue un pipeline secuencial de 7 notebooks:
 
 ```
 MergeGeo/
+├── 01_descargar_incendios_conaf.ipynb
+├── 02_preparar_incendios_para_era5.ipynb
 ├── 03_cruzar_incendios_era5.ipynb
 ├── 04_agregacion_spark_comuna_anio.ipynb
 ├── 05_serie_nacional_mensual_mtys_era5.ipynb
@@ -121,17 +123,26 @@ MergeGeo/
 ├── 07_mapa_puntos_importancia.ipynb
 ├── 08_modelo_riesgo_comuna_anio.ipynb
 ├── 09_dashboard.ipynb
-├── datos_procesados/              # Outputs generados
-│   ├── incendios_conaf_era5_2010_2020.csv/.parquet
-│   ├── incendios_nacional_mensual_era5.csv
-│   ├── spark_comuna_anio/
-│   ├── mapa_severidad_historica.html
-│   ├── mapa_estres_hidrico.html
-│   ├── mapa_puntos_importancia.html
-│   ├── modelo_riesgo_comuna_anio.csv
-│   └── dashboard.html
-├── spark_comuna_anio/             # Particiones Spark
-└── README.md
+├── era5_extraccion.ipynb           # Documenta cómo se generaron los .nc de ERA5
+│                                   # (no se ejecuta como parte del pipeline 01-09)
+├── incendios_conaf_raw.xls         # Output crudo del notebook 01 (input del 02)
+├── incendios_conaf_2010_2020.xls   # Output del notebook 02 (input del 03)
+├── 6.- Ocurrencia Nacional de Incendios Forestales según Mes, 1985 - 2024_octubre.xls
+│                                   # Serie histórica CONAF, input del notebook 05
+├── MergeGeo_informe.pdf
+├── .gitignore                      # Excluye los .nc de ERA5 (superan el límite de 100MB de GitHub)
+├── README.md
+└── datos_procesados/               # Outputs generados por los notebooks 03-09
+    ├── incendios_conaf_era5_2010_2020.csv/.parquet
+    ├── incendios_nacional_mensual_era5.csv
+    ├── spark_comuna_anio/
+    │   ├── csv/
+    │   └── parquet/año=2010.../año=2019/
+    ├── mapa_severidad_historica.html
+    ├── mapa_estres_hidrico.html
+    ├── mapa_puntos_importancia.html
+    ├── modelo_riesgo_comuna_anio.csv
+    └── dashboard.html
 ```
 
 ---
@@ -140,16 +151,24 @@ MergeGeo/
 
 **Requisitos previos:**
 - Google Colab (recomendado) o entorno local con Python 3.8+
-- Archivos de entrada en Google Drive:
-  - `incendios_conaf_2010_2020.xls` (generado por notebooks 01-02)
-  - `era5_t2m_chile_2000_2025.nc` y `era5_tp_chile_2000_2025.nc`
-  - `6.- Ocurrencia Nacional de Incendios...xls` (archivo 6 de CONAF)
+- Los `.nc` de ERA5 (`era5_t2m_chile_2000_2025.nc`, `era5_tp_chile_2000_2025.nc`) **no están en
+  este repo** — superan el límite de 100MB de GitHub. Están disponibles en el Drive del equipo;
+  hay que descargarlos de ahí y ubicarlos junto al resto de los inputs.
+- Todos los demás archivos de entrada (`incendios_conaf_2010_2020.xls`,
+  `incendios_conaf_raw.xls`, `6.- Ocurrencia Nacional...xls`) **ya están en la raíz de este
+  repo** — no hace falta conseguirlos aparte.
 
 **Orden de ejecución:**
-1. Los notebooks **01 y 02 ya están corridos** — sus outputs son `incendios_conaf_2010_2020.xls`
-2. Los `.nc` de ERA5 **ya están extraídos** — no es necesario re-correr su notebook
+1. Los notebooks **01 y 02 ya están corridos** — sus outputs (`incendios_conaf_raw.xls`,
+   `incendios_conaf_2010_2020.xls`) ya están en el repo. Si quieres volver a correr el
+   **01**, ahora pide la API key por teclado (`getpass`, no hardcodeada) — consíguela gratis
+   en `plataformadedatos.cl/user/developer`. El **02** puede correrse solo, sin pasar por el
+   01, usando `incendios_conaf_raw.xls` como input directo.
+2. Los `.nc` de ERA5 **ya están extraídos** (ver `era5_extraccion.ipynb` para el detalle de
+   cómo) — no es necesario re-correrlo, solo conseguir los `.nc` del Drive del equipo.
 3. Ejecutar en orden: **03 → 04 → 05 → 06 → 07 → 08 → 09**
-4. El notebook **09 (dashboard)** debe ejecutarse al final, ya que reúne todos los outputs anteriores
+4. El notebook **09 (dashboard)** debe ejecutarse al final, ya que reúne todos los outputs
+   anteriores
 
 **Nota importante:** `dashboard.html` debe quedar en la misma carpeta que los 3 archivos de mapas HTML — los embebe por `iframe` con ruta relativa.
 
@@ -164,5 +183,3 @@ MergeGeo/
 | **Matías Manríquez** | Visualización de datos: mapas geoespaciales interactivos en Folium y gráficos analíticos en Plotly | [@Mtys24](https://github.com/Mtys24) |
 | **Javiera González Mardones** | Visualización de datos | [@Zelaznog-J](https://github.com/Zelaznog-J) |
 | **José Salgado Escalona** | Redacción del informe: consolidación de la estructura narrativa, redacción técnica y síntesis de hallazgos | [@JoseRicardoSE](https://github.com/JoseRicardoSE) |
-
-
